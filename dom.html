@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>菜单</title>
+		<style type="text/css">
+			ul li.show{display: block;}
+			ul li.show ul{display: none;}
+			ul li.show ul.show{display: block;}
+		</style>
+	</head>
+
+	<body>
+		<div id="drag-wrapper">
+			<ul>
+				<li class="show">菜单1
+					<ul>
+						<li>菜单111111
+							<ul>
+								<li>菜单1-222222
+									<ul>
+										<li>菜单1-333333</li>
+										<li>菜单1-333333</li>
+										<li>菜单1-333333</li>
+										<li>菜单1-333333</li>
+									</ul>
+								</li>
+								<li>菜单1-222222</li>
+								<li>菜单1-222222</li>
+								<li>菜单1-222222</li>
+							</ul>
+						</li>
+						<li>菜单111111</li>
+						<li>菜单111111</li>
+						<li>菜单111111</li>
+					</ul>
+				</li>
+				<li class="show">菜单2
+					<ul>
+						<li>菜单222222</li>
+						<li>菜单222222</li>
+						<li>菜单222222</li>
+						<li>菜单222222</li>
+					</ul></li>
+				<li>菜单3</li>
+				<li>菜单4</li>
+			</ul>
+		</div>
+
+		<script type="text/javascript">
+			let drag = document.getElementById('drag-wrapper');
+			drag.onclick = function(event) {
+				let target = event.target;
+				let tagName = target.tagName;
+				if (target.tagName != 'LI') return;
+				// 是否有子元素
+				let childLen = target.children.length
+				if(childLen>0){
+					if(target.childNodes[1].classList.length>0){
+						target.childNodes[1].classList.remove('show')
+					}else{
+						target.childNodes[1].classList.add('show')
+						// target.nextSibling
+					}
+					
+				}
+			};
+		</script>
+	</body>
+</html>
